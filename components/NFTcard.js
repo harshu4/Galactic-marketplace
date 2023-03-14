@@ -1,34 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import styles from "../styles/Home.module.css";
 
 const NFTCard = ({ name, price, currency }) => {
-    return ( <
-        div className = { styles.nftcard } >
-        <
-        div className = { styles.nftcardheader } >
-        <
-        h2 style = {
-            { "color": "white" }
-        } > { name } < /h2> < /
-        div > <
-        div className = { styles.nftcardbody } >
-        <
-        h3 style = {
-            { "color": "white" }
-        } > { price } { currency } < /h3> < /
-        div > <
-        div className = { styles.nftcardfooter } >
-        <
-        /
-        div > <
-        /div>
-    );
+  return (
+    <div className={styles.nftcard}>
+      <div className={styles.nftcardheader}>
+        <h2 style={{ color: "white" }}> {name} </h2>{" "}
+      </div>{" "}
+      <div className={styles.nftcardbody}>
+        <h3 style={{ color: "white" }}>
+          {" "}
+          {price} {currency}{" "}
+        </h3>{" "}
+      </div>{" "}
+      <div className={styles.nftcardfooter}></div>{" "}
+    </div>
+  );
 };
 
 NFTCard.propTypes = {
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default NFTCard;

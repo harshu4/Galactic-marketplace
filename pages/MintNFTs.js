@@ -4,9 +4,6 @@ import { useMetaplex } from "./useMetaplex";
 import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
-import { css } from "@emotion/react";
-import { RingLoader } from "react-spinners";
-
 import dynamic from "next/dynamic";
 import NFTCard from "./NFTcard";
 const GLBViewer = dynamic(() => import("./Glbviewer"), { ssr: false });
@@ -14,16 +11,8 @@ const GLBViewer = dynamic(() => import("./Glbviewer"), { ssr: false });
 export const MintNFTs = ({ onClusterChange }) => {
   const { metaplex } = useMetaplex();
   const wallet = useWallet();
-  const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-    width: 20px;
-    height: 20px;
-  `;
 
   const [nft, setNft] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const [disableMint, setDisableMint] = useState(false);
   const mapping = {
@@ -90,7 +79,6 @@ export const MintNFTs = ({ onClusterChange }) => {
   }
 
   const onClick = async () => {
-    setIsLoading(true);
     const candyMachineAddress = new PublicKey(
       mapping[selectedValue].candymachine
     );
@@ -98,17 +86,14 @@ export const MintNFTs = ({ onClusterChange }) => {
     let candyMachine = await metaplex
       .candyMachines()
       .findByAddress({ address: candyMachineAddress });
+    // Here the actual mint happens. Depending on the guards that you are using you have to run some pre validation beforehand
+    // Read more: https://docs.metaplex.com/programs/candy-machine/minting#minting-with-pre-validation
 
     console.log(candyMachine);
-    try {
-      const { nft } = await metaplex.candyMachines().mint({
-        candyMachine,
-        collectionUpdateAuthority: candyMachine.authorityAddress,
-      });
-    } catch {
-      return;
-    }
-    setIsLoading(false);
+    const { nft } = await metaplex.candyMachines().mint({
+      candyMachine,
+      collectionUpdateAuthority: candyMachine.authorityAddress,
+    });
     alert("NFT minted Successfully");
     setNft(nft);
   };
@@ -232,8 +217,7 @@ export const MintNFTs = ({ onClusterChange }) => {
         <div>
           <div className={styles.container}>
             <div className={styles.nftForm}></div>{" "}
-          </div>{" "}
-          <RingLoader color={"#36D7B7"} css={override} loading={isLoading} />{" "}
+          </div>
           <div className={styles.nftcontainer}>
             <NFTCard
               name={selectedValue}
@@ -247,7 +231,7 @@ export const MintNFTs = ({ onClusterChange }) => {
             disabled={disableMint}
           >
             Mint{" "}
-          </button>
+          </button>{" "}
         </div>
       </div>{" "}
       <div style={{ paddingTop: "10%" }}>
