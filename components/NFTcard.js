@@ -6,15 +6,14 @@ const NFTCard = ({ name, price, currency }) => {
   return (
     <div className={styles.nftcard}>
       <div className={styles.nftcardheader}>
-        <h2 style={{ color: "white" }}> {name} </h2>{" "}
-      </div>{" "}
+        <h1 style={{ color: "black", fontWeight: 'bold' }}> {name} </h1>
+      </div>
       <div className={styles.nftcardbody}>
-        <h3 style={{ color: "white" }}>
-          {" "}
-          {price} {currency}{" "}
-        </h3>{" "}
-      </div>{" "}
-      <div className={styles.nftcardfooter}></div>{" "}
+        <h3 style={{ color: "black", fontWeight:'bolder' }}>
+          {price} {currency}
+        </h3>
+      </div>
+      <div className={styles.nftcardfooter}></div>
     </div>
   );
 };

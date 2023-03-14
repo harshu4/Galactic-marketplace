@@ -1,19 +1,21 @@
 import styles from "../styles/Home.module.css";
-
-import { useMetaplex } from "./useMetaplex";
 import { useState } from "react";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { css } from "@emotion/react";
 import { RingLoader } from "react-spinners";
-
 import dynamic from "next/dynamic";
+import { Metaplex, bundlrStorage, walletAdapterIdentity } from "@metaplex-foundation/js";
 import NFTCard from "./NFTcard";
+
+
 const GLBViewer = dynamic(() => import("./Glbviewer"), { ssr: false });
 
-export const MintNFTs = ({ onClusterChange }) => {
-  const { metaplex } = useMetaplex();
+export const MintNFTs = () => {
+
   const wallet = useWallet();
+  const { connection } = useConnection();
+
   const override = css`
     display: block;
     margin: 0 auto;
@@ -91,23 +93,15 @@ export const MintNFTs = ({ onClusterChange }) => {
 
   const onClick = async () => {
     setIsLoading(true);
-    const candyMachineAddress = new PublicKey(
-      mapping[selectedValue].candymachine
-    );
-    console.log(mapping[selectedValue].candymachine);
-    let candyMachine = await metaplex
-      .candyMachines()
-      .findByAddress({ address: candyMachineAddress });
 
-    console.log(candyMachine);
-    try {
-      const { nft } = await metaplex.candyMachines().mint({
-        candyMachine,
-        collectionUpdateAuthority: candyMachine.authorityAddress,
-      });
-    } catch {
-      return;
-    }
+    const metaplex = Metaplex.make(connection).use(walletAdapterIdentity(wallet)).use(bundlrStorage());
+    const candyMachineAddress = new PublicKey(mapping[selectedValue].candymachine);
+    let candyMachine = await metaplex.candyMachines().findByAddress({ address: candyMachineAddress })
+    const { nft } = await metaplex.candyMachines().mint({
+      candyMachine,
+      collectionUpdateAuthority: candyMachine.authorityAddress,
+    });
+ 
     setIsLoading(false);
     alert("NFT minted Successfully");
     setNft(nft);
@@ -115,19 +109,12 @@ export const MintNFTs = ({ onClusterChange }) => {
 
   return (
     <div className={styles.separator}>
-      {" "}
       <div>
-        <select onChange={onClusterChange} className={styles.dropdown}>
-          <option value="devnet"> Devnet </option>{" "}
-          <option value="mainnet"> Mainnet </option>{" "}
-          <option value="testnet"> Testnet </option>{" "}
-        </select>
-
         <div
           style={{
             display: "flex",
-            "flex-wrap": "wrap",
-            "margin-right": "10px",
+            "flexWrap": "wrap",
+            "marginRight": "10px",
             width: "150%",
           }}
         >
@@ -137,35 +124,32 @@ export const MintNFTs = ({ onClusterChange }) => {
               value="xbow"
               checked={selectedValue === "xbow"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Xbow{" "}
-            </div>{" "}
-          </label>{" "}
+            />
+            <div style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Xbow
+            </div>
+          </label>
           <label>
             <input
               type="radio"
               value="tesla"
               checked={selectedValue === "tesla"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Tesla{" "}
-            </div>{" "}
-          </label>{" "}
+            />
+            <div style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Tesla
+            </div>
+          </label>
           <label>
             <input
               type="radio"
               value="cannon"
               checked={selectedValue === "cannon"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Canon{" "}
-            </div>{" "}
+            />
+            <div  style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Canon
+            </div>
           </label>
           <label>
             <input
@@ -173,86 +157,84 @@ export const MintNFTs = ({ onClusterChange }) => {
               value="valkyrie"
               checked={selectedValue === "valkyrie"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Valkyrie{" "}
-            </div>{" "}
-          </label>{" "}
+            />
+            <div  style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Valkyrie
+            </div>
+          </label>
           <label>
             <input
               type="radio"
               value="robot"
               checked={selectedValue === "robot"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Robot{" "}
-            </div>{" "}
-          </label>{" "}
+            />
+            <div  style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Robot
+            </div>
+          </label>
           <label>
             <input
               type="radio"
               value="archer"
               checked={selectedValue === "archer"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Archer{" "}
-            </div>{" "}
-          </label>{" "}
+            />
+            <div  style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Archer
+            </div>
+          </label>
           <label>
             <input
               type="radio"
               value="miner"
               checked={selectedValue === "miner"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Miner{" "}
-            </div>{" "}
-          </label>{" "}
+            />
+            <div  style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}e>
+              Miner
+            </div>
+          </label>
           <label>
             <input
               type="radio"
               value="townhall"
               checked={selectedValue === "townhall"}
               onChange={handleRadioChange}
-            />{" "}
-            <div className="radio-label" style={{ padding: "5px" }}>
-              {" "}
-              Townhall{" "}
-            </div>{" "}
+              style={{backgroundColor:'black'}}
+            />
+            <div  style={{ padding: "5px", fontSize: 22, color:'whitesmoke', fontWeight:'bold' }}>
+              Townhall
+            </div>
           </label>
         </div>
-
-        <div>
+        <div style={{'display': 'flex', marginTop: 25}}>
+          <div>
+            <GLBViewer src={mapping[selectedValue].src} />
+          </div>
+          <div>
           <div className={styles.container}>
-            <div className={styles.nftForm}></div>{" "}
-          </div>{" "}
-          <RingLoader color={"#36D7B7"} css={override} loading={isLoading} />{" "}
+            <div className={styles.nftForm}></div>
+          </div>
           <div className={styles.nftcontainer}>
             <NFTCard
               name={selectedValue}
-              price={mapping[selectedValue].price}
+              price={Number(mapping[selectedValue].price)}
               currency={mapping[selectedValue].currency}
-            />{" "}
-          </div>{" "}
+            />
+          </div>
           <button
             className={styles.nftcardbutton}
             onClick={onClick}
             disabled={disableMint}
+            style={{ fontWeight: 'bold'}}
           >
-            Mint{" "}
+            Mint
           </button>
+          </div>
         </div>
-      </div>{" "}
-      <div style={{ paddingTop: "10%" }}>
-        <GLBViewer src={mapping[selectedValue].src} />{" "}
-      </div>{" "}
+      </div>
+      <RingLoader color={"white"}  style={{ position: 'absolute', left: '45%', top: '45%'}} loading={isLoading} />
     </div>
   );
 };

@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    background-color: #0f172a;
 }
 
 .container {
@@ -101,7 +102,7 @@
 }
 
 .nftcard {
-    background-color: #f433ff;
+    background: linear-gradient(0deg, #6B48FF, #FF6BAC, #A5FACD, #A5D5FF);
     /* neon pink */
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
