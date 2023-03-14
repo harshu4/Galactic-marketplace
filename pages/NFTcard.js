@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from "../styles/Home.module.css";
 
 const NFTCard = ({ name, price, currency }) => {
     return ( <
-        div className = "nft-card" >
+        div className = { styles.nftcard } >
         <
-        div className = "nft-card-header" >
+        div className = { styles.nftcardheader } >
         <
-        h2 > { name } < /h2> < /
+        h2 style = {
+            { "color": "white" }
+        } > { name } < /h2> < /
         div > <
-        div className = "nft-card-body" >
+        div className = { styles.nftcardbody } >
         <
-        h3 > { price } { currency } < /h3> < /
+        h3 style = {
+            { "color": "white" }
+        } > { price } { currency } < /h3> < /
         div > <
-        div className = "nft-card-footer" >
+        div className = { styles.nftcardfooter } >
         <
         /
         div > <

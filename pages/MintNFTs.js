@@ -241,25 +241,28 @@ export const MintNFTs = ({ onClusterChange }) => {
         /div> 
 
         <
-        div className = "nft-container" >
+        div className = { styles.nftcontainer } >
         <
         NFTCard name = { selectedValue }
         price = { mapping[selectedValue].price }
         currency = { mapping[selectedValue].currency }
         /> < /
         div > <
-        button className = "nft-card-button"
+        button className = { styles.nftcardbutton }
         onClick = { onClick }
         disabled = { disableMint } >
         Mint <
         /button> < /
         div >
         <
-        /div> <
-        GLBViewer src = { mapping[selectedValue].src }
-        / >
-
+        /div>  <
+        div style = {
+            { "paddingTop": "10%" }
+        } >
         <
+        GLBViewer src = { mapping[selectedValue].src }
+        / > < /
+        div > <
         /div>
     );
 };
