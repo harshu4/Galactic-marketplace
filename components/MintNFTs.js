@@ -60,19 +60,19 @@ export const MintNFTs = ({ onClusterChange }) => {
         },
         archer: {
             src: "./archer.glb",
-            price: "130",
+            price: "70",
             currency: "Aureus",
             candymachine: "FxK3GMbxU74WXKFB82ndx99Mcs4t1pMUYtc8xzmXRtyC",
         },
         robot: {
             src: "./robot.glb",
-            price: "130",
+            price: "90",
             currency: "Aureus",
             candymachine: "12QVJusmwTxe4XwjUPSrJAdRp13g7h9uY4uyuX2mBoeo",
         },
         valkyrie: {
             src: "./valkyrie.glb",
-            price: "130",
+            price: "80",
             currency: "Aureus",
             candymachine: "AuPCGX5iE91aVpwZpCvAiQcH6KEJVs9rHZqotrzaxiQa",
         },
@@ -125,8 +125,8 @@ export const MintNFTs = ({ onClusterChange }) => {
         <
         option value = "devnet" > Devnet < /option>{" "} <
         option value = "mainnet" > Mainnet < /option>{" "} <
-        option value = "testnet" > Testnet < /option>{" "} <
-        /select>
+        option value = "testnet" > Testnet < /option>{" "} < /
+        select >
 
         <
         div style = {
@@ -147,10 +147,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Xbow { " " } <
-        /div>{" "} <
-        /label>{" "} <
+        /div>{" "} < /
+        label > { " " } <
         label >
         <
         input type = "radio"
@@ -160,10 +161,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Tesla { " " } <
-        /div>{" "} <
-        /label>{" "} <
+        /div>{" "} < /
+        label > { " " } <
         label >
         <
         input type = "radio"
@@ -173,10 +175,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Canon { " " } <
-        /div>{" "} <
-        /label> <
+        /div>{" "} < /
+        label > <
         label >
         <
         input type = "radio"
@@ -186,10 +189,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Valkyrie { " " } <
-        /div>{" "} <
-        /label>{" "} <
+        /div>{" "} < /
+        label > { " " } <
         label >
         <
         input type = "radio"
@@ -199,10 +203,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Robot { " " } <
-        /div>{" "} <
-        /label>{" "} <
+        /div>{" "} < /
+        label > { " " } <
         label >
         <
         input type = "radio"
@@ -212,10 +217,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Archer { " " } <
-        /div>{" "} <
-        /label>{" "} <
+        /div>{" "} < /
+        label > { " " } <
         label >
         <
         input type = "radio"
@@ -225,10 +231,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Miner { " " } <
-        /div>{" "} <
-        /label>{" "} <
+        /div>{" "} < /
+        label > { " " } <
         label >
         <
         input type = "radio"
@@ -238,10 +245,11 @@ export const MintNFTs = ({ onClusterChange }) => {
         />{" "} <
         div className = "radio-label"
         style = {
-            { padding: "5px" } } > { " " }
+            { padding: "5px" }
+        } > { " " }
         Townhall { " " } <
-        /div>{" "} <
-        /label> <
+        /div>{" "} < /
+        label > <
         /div>
 
         <
@@ -249,8 +257,8 @@ export const MintNFTs = ({ onClusterChange }) => {
         <
         div className = { styles.container } >
         <
-        div className = { styles.nftForm } > < /div>{" "} <
-        /div>{" "} <
+        div className = { styles.nftForm } > < /div>{" "} < /
+        div > { " " } <
         RingLoader color = { "#36D7B7" }
         css = { override }
         loading = { isLoading }
@@ -260,21 +268,22 @@ export const MintNFTs = ({ onClusterChange }) => {
         NFTCard name = { selectedValue }
         price = { mapping[selectedValue].price }
         currency = { mapping[selectedValue].currency }
-        />{" "} <
-        /div>{" "} <
+        />{" "} < /
+        div > { " " } <
         button className = { styles.nftcardbutton }
         onClick = { onClick }
         disabled = { disableMint } >
         Mint { " " } <
-        /button> <
-        /div> <
+        /button> < /
+        div > <
         /div>{" "} <
         div style = {
-            { paddingTop: "10%" } } >
+            { paddingTop: "10%" }
+        } >
         <
         GLBViewer src = { mapping[selectedValue].src }
-        />{" "} <
-        /div>{" "} <
+        />{" "} < /
+        div > { " " } <
         /div>
     );
 };
