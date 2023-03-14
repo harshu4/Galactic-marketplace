@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+
 import { useMetaplex } from "./useMetaplex";
 import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -25,49 +26,49 @@ export const MintNFTs = ({ onClusterChange }) => {
             "src": "./xbow.glb",
             "price": "100",
             "currency": "Aureus",
-            "candymachine": "8ynfucir4qhejWtuCMXBH2nks7zoGnEXdgpLivdaudc8"
+            "candymachine": "8W4F3BoW1BK27YjMASVDFZQDSRVLTxtmPxvFWNNCqD9b"
         },
         "townhall": {
             "src": "./townhall.glb",
             "price": "0.01",
             "currency": "Solana",
-            "candymachine": "EGGinh4T2XhwzAZXCEWC8WsyxYS3ga3jfiU2TYi2k1Mg"
+            "candymachine": "AzGzVcoo9uwzUUN8H1uVaBB4DCig6Po8SXcFGRN4PiS5"
         },
         "miner": {
             "src": "./miner.glb",
             "price": "0.1",
             "currency": "Solana",
-            "candymachine": "FbRr4tVksRuW3wz98DpK1KpZhund94XfBKDy53PZ5f5q"
+            "candymachine": "7HnUFoU3j6Dvs6x643SkEE2ZMUvJK1rhnuiLjZe7jSMP"
         },
         "tesla": {
             "src": "./tesla.glb",
             "price": "120",
             "currency": "Aureus",
-            "candymachine": "2Vpj8sWy1VniJZF1ArfZtFdu6Zt2eQmX659CZtHVy6ry"
+            "candymachine": "DyRkBKQTSvUSqEnmLPdTM8gZ67kUFSjEjkrzKpon7S9Z"
         },
         "cannon": {
             "src": "./cannon.glb",
             "price": "130",
             "currency": "Aureus",
-            "candymachine": "5chhmq4uPQpeZxNXXJQdZgB8qYxUDzYhdQ9vS4KKLV4t"
+            "candymachine": "6i8ubJ5fSs4BV4vcYe7H7U6NUu74Gj42yZzxfi4rPvSQ"
         },
         "archer": {
             "src": "./archer.glb",
             "price": "130",
             "currency": "Aureus",
-            "candymachine": "CpKkGgY6wrtQ95Vou8xVqFS99EuzC5LTR1ur4MSyxa2z"
+            "candymachine": "FxK3GMbxU74WXKFB82ndx99Mcs4t1pMUYtc8xzmXRtyC"
         },
         "robot": {
             "src": "./robot.glb",
             "price": "130",
             "currency": "Aureus",
-            "candymachine": "53xmJKzX5s1nai6iXLDoMbEicauXiBbBn1Anm9Mj8afC"
+            "candymachine": "12QVJusmwTxe4XwjUPSrJAdRp13g7h9uY4uyuX2mBoeo"
         },
         "valkyrie": {
             "src": "./valkyrie.glb",
             "price": "130",
             "currency": "Aureus",
-            "candymachine": "ApygrrkriSV5gzFYSMXwQ4FRJKQJsRPFWzuVTo2NtBUb"
+            "candymachine": "AuPCGX5iE91aVpwZpCvAiQcH6KEJVs9rHZqotrzaxiQa"
         }
     }
 
@@ -104,7 +105,7 @@ export const MintNFTs = ({ onClusterChange }) => {
     };
 
     return ( <
-        div className = "separator" > <
+        div className = { styles.separator } > <
         div >
         <
         select onChange = { onClusterChange }
@@ -116,7 +117,14 @@ export const MintNFTs = ({ onClusterChange }) => {
         select >
 
         <
-        div className = "radio-button-group" >
+        div style = {
+            {
+                "display": "flex",
+                "flex-wrap": "wrap",
+                "margin-right": "10px",
+                "width": "150%"
+            }
+        } >
         <
         label >
         <
@@ -125,7 +133,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'xbow' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Xbow < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Xbow < /div> < /
         label > <
         label >
         <
@@ -134,7 +145,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'tesla' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Tesla < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Tesla < /div> < /
         label > <
         label >
         <
@@ -143,7 +157,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'cannon' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Canon < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Canon < /div> < /
         label >
         <
         label >
@@ -153,7 +170,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'valkyrie' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Valkyrie < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Valkyrie < /div> < /
         label > <
         label >
         <
@@ -162,7 +182,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'robot' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Robot < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Robot < /div> < /
         label > <
         label >
         <
@@ -171,7 +194,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'archer' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Archer < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Archer < /div> < /
         label > <
         label >
         <
@@ -180,7 +206,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'miner' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Miner < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Miner < /div> < /
         label > <
         label >
         <
@@ -189,7 +218,10 @@ export const MintNFTs = ({ onClusterChange }) => {
         checked = { selectedValue === 'townhall' }
         onChange = { handleRadioChange }
         /> <
-        div className = "radio-label" > Townhall < /div> < /
+        div className = "radio-label"
+        style = {
+            { "padding": "5px" }
+        } > Townhall < /div> < /
         label >
 
 

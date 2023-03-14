@@ -20,14 +20,15 @@ const GLBViewer = ({ src }) => {
 
         scene.background = new THREE.Color(0xffffff);
         const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
-        renderer.setSize(800, 500);
+        renderer.setSize(500, 400);
 
         const controls = new OrbitControls(camera, renderer.domElement);
 
         const loader = new GLTFLoader();
         loader.load(src, (gltf) => {
             scene.add(gltf.scene);
-            camera.position.z = 10;
+            camera.position.z = 15;
+
 
             // Add a point light to the scene
             const pointLight = new THREE.PointLight(0xffffff, 3);
