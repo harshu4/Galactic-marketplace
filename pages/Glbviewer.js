@@ -20,7 +20,7 @@ const GLBViewer = ({ src }) => {
 
         scene.background = new THREE.Color(0xffffff);
         const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
-        renderer.setSize(500, 400);
+        renderer.setSize(600, 400);
 
         const controls = new OrbitControls(camera, renderer.domElement);
 
