@@ -24,72 +24,72 @@ export const MintNFTs = () => {
     height: 20px;
   `;
 
-  const [nft, setNft] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+    const [nft, setNft] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-  const [disableMint, setDisableMint] = useState(false);
-  const mapping = {
-    xbow: {
-      src: "./xbow.glb",
-      price: "100",
-      currency: "Aureus",
-      candymachine: "8W4F3BoW1BK27YjMASVDFZQDSRVLTxtmPxvFWNNCqD9b",
-    },
-    townhall: {
-      src: "./townhall.glb",
-      price: "0.01",
-      currency: "Solana",
-      candymachine: "AzGzVcoo9uwzUUN8H1uVaBB4DCig6Po8SXcFGRN4PiS5",
-    },
-    miner: {
-      src: "./miner.glb",
-      price: "0.1",
-      currency: "Solana",
-      candymachine: "7HnUFoU3j6Dvs6x643SkEE2ZMUvJK1rhnuiLjZe7jSMP",
-    },
-    tesla: {
-      src: "./tesla.glb",
-      price: "120",
-      currency: "Aureus",
-      candymachine: "DyRkBKQTSvUSqEnmLPdTM8gZ67kUFSjEjkrzKpon7S9Z",
-    },
-    cannon: {
-      src: "./cannon.glb",
-      price: "130",
-      currency: "Aureus",
-      candymachine: "6i8ubJ5fSs4BV4vcYe7H7U6NUu74Gj42yZzxfi4rPvSQ",
-    },
-    archer: {
-      src: "./archer.glb",
-      price: "130",
-      currency: "Aureus",
-      candymachine: "FxK3GMbxU74WXKFB82ndx99Mcs4t1pMUYtc8xzmXRtyC",
-    },
-    robot: {
-      src: "./robot.glb",
-      price: "130",
-      currency: "Aureus",
-      candymachine: "12QVJusmwTxe4XwjUPSrJAdRp13g7h9uY4uyuX2mBoeo",
-    },
-    valkyrie: {
-      src: "./valkyrie.glb",
-      price: "130",
-      currency: "Aureus",
-      candymachine: "AuPCGX5iE91aVpwZpCvAiQcH6KEJVs9rHZqotrzaxiQa",
-    },
-  };
+    const [disableMint, setDisableMint] = useState(false);
+    const mapping = {
+        xbow: {
+            src: "./xbow.glb",
+            price: "100",
+            currency: "Aureus",
+            candymachine: "8W4F3BoW1BK27YjMASVDFZQDSRVLTxtmPxvFWNNCqD9b",
+        },
+        townhall: {
+            src: "./townhall.glb",
+            price: "0.01",
+            currency: "Solana",
+            candymachine: "AzGzVcoo9uwzUUN8H1uVaBB4DCig6Po8SXcFGRN4PiS5",
+        },
+        miner: {
+            src: "./miner.glb",
+            price: "0.1",
+            currency: "Solana",
+            candymachine: "7HnUFoU3j6Dvs6x643SkEE2ZMUvJK1rhnuiLjZe7jSMP",
+        },
+        tesla: {
+            src: "./tesla.glb",
+            price: "120",
+            currency: "Aureus",
+            candymachine: "DyRkBKQTSvUSqEnmLPdTM8gZ67kUFSjEjkrzKpon7S9Z",
+        },
+        cannon: {
+            src: "./cannon.glb",
+            price: "130",
+            currency: "Aureus",
+            candymachine: "6i8ubJ5fSs4BV4vcYe7H7U6NUu74Gj42yZzxfi4rPvSQ",
+        },
+        archer: {
+            src: "./archer.glb",
+            price: "70",
+            currency: "Aureus",
+            candymachine: "FxK3GMbxU74WXKFB82ndx99Mcs4t1pMUYtc8xzmXRtyC",
+        },
+        robot: {
+            src: "./robot.glb",
+            price: "90",
+            currency: "Aureus",
+            candymachine: "12QVJusmwTxe4XwjUPSrJAdRp13g7h9uY4uyuX2mBoeo",
+        },
+        valkyrie: {
+            src: "./valkyrie.glb",
+            price: "80",
+            currency: "Aureus",
+            candymachine: "AuPCGX5iE91aVpwZpCvAiQcH6KEJVs9rHZqotrzaxiQa",
+        },
+    };
 
-  let walletBalance;
-  const [selectedValue, setSelectedValue] = useState("xbow");
+    let walletBalance;
+    const [selectedValue, setSelectedValue] = useState("xbow");
 
-  const handleRadioChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
+    const handleRadioChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
 
-  // show and do nothing if no wallet is connected
-  if (!wallet.connected) {
-    return null;
-  }
+    // show and do nothing if no wallet is connected
+    if (!wallet.connected) {
+        return null;
+    }
 
   const onClick = async () => {
     setIsLoading(true);
